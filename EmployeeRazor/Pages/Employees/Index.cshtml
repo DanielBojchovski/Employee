@@ -1,0 +1,60 @@
+﻿@page
+@model EmployeeRazor.Pages.Employees.IndexModel
+
+<partial name="_Notification" />
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Employee List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-page="create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>&nbsp; Add New Employee
+            </a>
+        </div>
+    </div>
+
+    <br /><br />
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>
+                    Salary
+                </th>
+                <th>
+                    Email
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var obj in Model.Employees)
+            {
+                <tr>
+                    <td width="25%">@obj.FirstName</td>
+                    <td width="25%">@obj.LastName</td>
+                    <td width="25%">@obj.Salary</td>
+                    <td width="25%">@obj.Email</td>
+                    <td>
+                        <div class="w-100 btn-group" role="group">
+                            <a asp-page="Edit" asp-route-id="@obj.EmployeeId" class="btn btn-primary mx2">
+                                <i class="bi bi-pencil-fill"></i>
+                            </a>
+                            <a asp-page="Delete" asp-route-id="@obj.EmployeeId" class="btn btn-danger mx2">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
